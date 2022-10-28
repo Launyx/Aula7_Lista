@@ -1,0 +1,11 @@
+Application Internal Error - StrUtil.prg
+Terminated at: 2022-10-27 19:55:18
+Erro irrecuperável 9009: hb_xrealloc nao pode realocar memória
+Called from AADD(0)
+Called from TAM(20) in pcode.hrb
+Called from MAIN(4) in pcode.hrb
+Called from HB_HRBDO(0)
+Called from __HBSHELL(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from HBMK_LOCAL_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from __HBMK_PUBLIC_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+------------------------------------------------------------------------
