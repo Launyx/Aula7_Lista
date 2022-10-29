@@ -11,6 +11,7 @@ function main()
 
     carrega_vetor_AZ(@vetorA)
 
+    //Loop para o menu
     while bLoop
 
         SET MESSAGE TO 24 CENTER
@@ -43,6 +44,7 @@ function main()
 
 RETURN nil
 
+// Função para carregar o vetor com letras aleatórias
 static function carrega_vetor_AZ(vetor)
 
     local nI, cont
@@ -53,6 +55,7 @@ static function carrega_vetor_AZ(vetor)
 
 return nil
 
+// Função para procurar um caractere no vetor
 static function procura_vetor(caractere, vetor)
     local nI, cont, bTem := .F., nCont, cArray := ""
     local nCount
@@ -76,6 +79,7 @@ static function procura_vetor(caractere, vetor)
 
 RETURN nil
 
+// Função para procurar a primeira ocorrencia de um caractere no vetor
 static function procura_vetor_first(caractere, vetor)
 
     local nI, cont, bTem := .F., nCont
@@ -101,6 +105,7 @@ static function procura_vetor_first(caractere, vetor)
 
 RETURN nil
 
+// Função para procurar a ultima ocorrencia de um caractere no vetor
 static function procura_vetor_last(caractere, vetor)
 
     local nI, cont, bTem := .F., nCont

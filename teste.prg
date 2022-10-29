@@ -1,8 +1,6 @@
 function main()
 
-    local vetor := {100,20,30,2,15,63,7,18,}
-
-    Asort(vetor)
-    QOUT(hb_valtoexp(vetor))
+    local nvalor := 100 % 0.05
+    QOUT(nvalor)
 
 RETURN nil

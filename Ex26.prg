@@ -16,9 +16,6 @@ function main()
         end if
     end do
 
-    
-    
-
     QOUT("A primeira letra da palavra é: " + nChar)
 
 RETURN nil

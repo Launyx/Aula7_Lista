@@ -1,4 +1,4 @@
-REQUEST HB_GT_WIN_DEFAULT
+// REQUEST HB_GT_WIN_DEFAULT
 SET PROCEDURE TO Lib_Vetores.prg
 function main()
 
@@ -30,26 +30,40 @@ function main()
                 Carrega_vetor(@vetor)
                 wait "Pressione qualquer tecla para sair..."
             CASE nChoice == 2       
-                QOUT(Chr(10) + "Conteudo do vetor: ")
+                QOUT(Chr(10) + "")
                 mostra_vetor(vetor)    
                 wait "Pressione qualquer tecla para sair..."
             CASE nChoice == 3
-                mostra_vetor(vetor_cresc(vetor))
+                QOUT(Chr(10) + "")
+                vetor_cresc(@vetor)
                 wait "Pressione qualquer tecla para sair..."
             CASE nChoice == 4
-                mostra_vetor(vetor_decres(vetor))
+                QOUT(Chr(10) + "")
+                vetor_decres(vetor)
                 wait "Pressione qualquer tecla para sair..."
             CASE nChoice == 5
+                QOUT(Chr(10) + "")
+                existe_vetor(vetor)
                 wait "Pressione qualquer tecla para sair..."
             CASE nChoice == 6
+                QOUT(Chr(10) + "")
+                soma_vetor(vetor)
                 wait "Pressione qualquer tecla para sair..."
             CASE nChoice == 7
+                QOUT(Chr(10) + "")
+                media_vetor(vetor)
                 wait "Pressione qualquer tecla para sair..."
             CASE nChoice == 8
+                QOUT(Chr(10) + "")
+                maior_menor(vetor)
                 wait "Pressione qualquer tecla para sair..."
             CASE nChoice == 9
+                QOUT(Chr(10) + "")
+                embaralha_vetor(@vetor)
                 wait "Pressione qualquer tecla para sair..."
             CASE nChoice == 10
+                QOUT(Chr(10) + "")
+                repete_vetor(vetor)
                 wait "Pressione qualquer tecla para sair..."
         ENDCASE
     end do
@@ -69,11 +83,18 @@ RETURN nil
 
 static function vetor_cresc(vetor)
 
-    local aArray
+    local aArray, nI
 
-    aArray := ASort(vetor)
+    if vetor[1] == nil
+        QOUT("O vetor está vazio!")
+    else
+        Asort(vetor)
+        for nI := 1 TO len(vetor)
+            QOUT(StrZero(nI, 2) + ". " + Str(vetor[nI]))
+        next nI
+    end if
 
-RETURN aArray
+RETURN nil
 
 static function vetor_decres(vetor)
 
@@ -87,5 +108,113 @@ static function vetor_decres(vetor)
         vetor[tamanho - 1] := aux
     next nI1
 
-
 RETURN vetor
+
+static function existe_vetor(vetor)
+
+    local nScanner, nValor, bLoop := .T.
+
+    while bLoop
+        ACCEPT "Digite um número: " TO nValor
+        if isdigit(nValor)
+            exit
+        else
+            QOUT("Valor inválido, digite um número")
+            loop
+        end if
+    end do
+
+    if len(vetor) == 0
+        QOUT("O vetor está vazio!")
+
+    else
+        nScanner := Ascan(vetor, Val(nValor), 1, len(vetor))
+        QOUT("O número " + nValor + " está na posição" + Alltrim(Str(nScanner)))
+    end if
+
+RETURN nil
+
+static function soma_vetor(vetor)
+
+    local nI, media := 0
+
+    for nI := 1 TO len(vetor)
+        media += vetor[nI]
+    next nI
+
+    QOUT("A soma de todos os valores do vetor é igual a " + Alltrim(Str(media)))
+    
+
+RETURN nil
+
+static function media_vetor(vetor)
+
+    local nI, media := 0
+
+    for nI := 1 TO len(vetor)
+        media += vetor[nI]
+    next nI
+
+    media := media / 8
+    QOUT("A média do vetor é: " + Alltrim(Str(media)))
+
+RETURN nil
+
+static function maior_menor(vetor)
+
+    local nMenor := 99999
+    local nMaior := 0
+    local nI
+
+    for nI := 1 TO len(vetor)
+        if vetor[nI] > nMaior
+            nMaior := vetor[nI]
+        endif
+
+        if vetor[nI] < nMenor
+            nMenor := vetor[nI]
+        end if
+    next nI
+
+    QOUT("O maior valor do vetor é " + Alltrim(Str(nMaior) + " e o menor valor é " + Alltrim(Str(nMenor))))
+
+RETURN nil
+
+static function embaralha_vetor(vetor)
+
+    local nI, aux
+
+    for nI := 1 TO len(vetor)
+        aux := vetor[nI]
+        vetor[nI] := vetor[len(vetor)]
+        vetor[len(vetor)] := aux
+    next nI
+
+    mostra_vetor(vetor)
+
+RETURN nil
+
+static function repete_vetor(vetor)
+
+    // coloca em outro vetor, verifica vetor com ascan e variavel que soma as repeticoes
+    local nI1, nI2, nJ, verifica, vetorAux := {}
+    local posi := {}, repeticoes := 0
+
+    for nI1 := 1 TO len(vetor)
+        AAdd(vetorAux, vetor[nI1])
+    next nI1
+
+    for nI2 := 1 TO len(vetor)
+        for nJ := 1 TO len(vetor)
+            verifica := Ascan(vetor, vetorAux[nI2], nJ, 1)
+            repeticoes ++
+            
+            if repeticoes > 1
+                AAdd(posi, verifica)
+            end if
+        next nJ
+    next nI2
+
+    QOUT(hb_valtoexp(posi))
+
+RETURN nil

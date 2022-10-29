@@ -1,4 +1,4 @@
-REQUEST HB_GT_WIN_DEFAULT
+// REQUEST HB_GT_WIN_DEFAULT
 function main()
 
     local aNotas := {{}, {}, {}, {}, {}}
@@ -30,6 +30,9 @@ function main()
                 wait "Pressione qualquer tecla para continuar..."
             CASE nChoice == 4
                 ordem_alfa(aNotas)
+                wait "Pressione qualquer tecla para continuar..."
+            CASE nChoice == 5
+                
                 wait "Pressione qualquer tecla para continuar..."
         ENDCASE
     end do
@@ -112,7 +115,7 @@ RETURN nil
 
 static function calcula_media(matriz)
 
-    local nI, nJ, cont, nMedias := 0
+    local nI, nJ, cont, nCont, nMedias := 0
     local aMedias := {{}, {}, {}, {}, {}}
 
     for nI := 1 TO 5
@@ -130,23 +133,27 @@ static function calcula_media(matriz)
     next cont
 
     QOUT("")
-    QOUT(hb_ValToExp(aMedias[1]))
-    QOUT(hb_ValToExp(aMedias[2]))
-    QOUT(hb_ValToExp(aMedias[3]))
-    QOUT(hb_ValToExp(aMedias[4]))
-    QOUT(hb_ValToExp(aMedias[5]))
+    for nCont := 1 TO 5
+        QOUT(hb_ValToExp(aMedias[nCont]))
+    next nCont
 
 RETURN nil
 
 static function ordem_alfa(matriz)
+    // asc ou chr
+    local nI, nJ, cCaracter, aArray := {}
 
+    for nI := 1 TO len(matriz)
+        cCaracter := matriz[nI][1]
+        cCaracter := SubStr(cCaracter, 1, 1)
+        QOUT(cCaracter)
+
+        // AAdd(aArray, Left(matriz[nI], 1))
+    next nI
+    
     Asort(matriz)
 
-    QOUT("")
-    QOUT(hb_ValToExp(matriz[1]))
-    QOUT(hb_ValToExp(matriz[2]))
-    QOUT(hb_ValToExp(matriz[3]))
-    QOUT(hb_ValToExp(matriz[4]))
-    QOUT(hb_ValToExp(matriz[5]))
+
+    QOUT(hb_ValToExp(aArray))
 
 RETURN nil
