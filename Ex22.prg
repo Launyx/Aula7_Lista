@@ -6,6 +6,7 @@ function main()
     local nI, popV
     local contador := 0
 
+    // Loop para carregar o vetor
     for nI := 1 TO len(vetor)
         ACCEPT "Digite um número para por no vetor: " TO popV
 
@@ -14,8 +15,10 @@ function main()
         end if
     next nI
 
+    // Função para colocar o vetor em ordem crescente
     Asort(vetor)
     
+    // Chamda da função de uma biblioteca para msotrar o vetor
     mostra_vetor(vetor)
 
 RETURN nil

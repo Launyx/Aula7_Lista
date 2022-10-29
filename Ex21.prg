@@ -8,6 +8,7 @@ function main()
 
 RETURN nil
 
+// Função para carregar o vetor com letras minusculas aleatorias
 static function carrega_vetor_AZ(vetor)
 
     local nI, nRand, check
@@ -15,7 +16,7 @@ static function carrega_vetor_AZ(vetor)
     for nI := 1 to 12
         nRand := Random()%25 + 97
 
-        if AScan(vetor, Chr(nRand)) == 0
+        if AScan(vetor, Chr(nRand)) == 0    // Condição para verificar se a letra ja existe no vetor
            AAdd(vetor, Chr(nRand)) 
         end if
 
@@ -23,6 +24,7 @@ static function carrega_vetor_AZ(vetor)
 
 return nil
 
+// Função para mostrar o vetor
 static function mostra_vetor(vetor)
 
     QOUT(hb_valtoexp(vetor))

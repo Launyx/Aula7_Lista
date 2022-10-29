@@ -8,6 +8,7 @@ functio main()
 
 RETURN nil
 
+// Função para carregar matriz com letras maiusculas aleatórias entre A e Z
 static function carrega_matriz(matriz)
 
     local nI, nJ, cont
@@ -21,14 +22,18 @@ static function carrega_matriz(matriz)
 
 RETURN nil
 
+// Função para obter a diagonal principal de uma matriz
 static function mostra_colunaP(matriz)
 
     local nI, nJ
     local cont, cString := ""
+
+    // Loop para somar cada elemento que faz parte da diagonal principal
     for cont := 1 TO 5
         cString += matriz[cont][cont]
     next cont
 
+    // Loop para mostrar a matriz
     for nI := 1 TO 5
         QOUT(hb_ValToExp(matriz[nI]))
     next nI

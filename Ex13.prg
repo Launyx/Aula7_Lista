@@ -10,7 +10,7 @@ function main()
         AFill(vetorA, Random()%99 + 1, nIA, 1)
     next nIA
 
-
+    // Laço para carregar o vetor B com cada elemento send o triplo do elemento respectivo do vetor A
     for nIB := 1 to len(vetorB)
         AFill(vetorB, vetorA[nIB] * 3, nIB, 1)
     next nIB

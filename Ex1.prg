@@ -5,6 +5,7 @@ function main()
     local dias := {}
     local bLoop := .T.
 
+    
     for nI := 1 TO 7
         AAdd(dias, CDoW(CToD("2023/01/" + Alltrim(Str(nI)))))   // Adiciona a uma Array os dias de uma semana, começando pelo domingo
     next nI

@@ -7,6 +7,7 @@ function main()
     pergunta_Data(@nDia, @nMes, @nAno, @dData)
     pega_dia(dData)
 
+    // Condição para diferenciar ano bissexto
     if bissexto(dData)
         QOUT("A data " + DMY(dData) + " Corresponde ao " + Alltrim(Str(pega_dia(dData))) + "°/366 dia do ano!")
     else
@@ -21,6 +22,7 @@ function pega_Dia(cData)
 
 RETURN dia
 
+// Função para perguntar a data para o usuario
 function pergunta_Data(cAno, cMes, cDia, cData)
 
     local bAno := .T., bMes := .T., bDia := .T.
@@ -62,6 +64,7 @@ function pergunta_Data(cAno, cMes, cDia, cData)
 
 RETURN nil
 
+// Função para verificar se o ano é bissexto
 function bissexto(cData)
 
     local Bissexto := IsLeap(cData)

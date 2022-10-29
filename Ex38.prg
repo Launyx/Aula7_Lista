@@ -17,6 +17,7 @@ function main()
 
 RETURN nil
 
+// Função para inverter a linha com a coluna de uma matriz e colocar em outra
 static function inverte_matriz(matriz, matrizalvo)
 
     local nI
@@ -29,6 +30,7 @@ static function inverte_matriz(matriz, matrizalvo)
 
 RETURN nil
 
+// Função para mostrar matriz
 static function mostra_matriz(matriz)
 
     local nI, nJ
@@ -40,6 +42,7 @@ static function mostra_matriz(matriz)
 
 RETURN nil
 
+// Função para preencher a matriz
 static function preenche_matriz(matriz)
 
     local nI1, nI2, nI3

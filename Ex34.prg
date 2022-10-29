@@ -24,6 +24,7 @@ RETURN nil
 
 static function traduz_morse(escolha)
 
+    // Array com traduções do codigo morse
     local aMorse := {{"A", ".-"}, {"B", "-..."}, {"C", "-.-."},;
                      {"D", "-.."}, {"E", "."}, {"F", "..-."},;
                      {"G", "--."}, {"H", "...."}, {"I", ".."},; 
@@ -40,6 +41,7 @@ static function traduz_morse(escolha)
 
     ACCEPT "Digite o código morse: " TO codMor
 
+    // Laço para traduzir o codigo morse para caractere baseado no array
     for nI := 1 TO 36
         if aMorse[nI][2] == codMor
             QOUT(aMorse[nI][1])
@@ -51,6 +53,7 @@ RETURN nil
 
 static function traduz_caractere(morse)
 
+    // Array com traduções do codigo morse
     local aMorse := {{"A", ".-"}, {"B", "-..."}, {"C", "-.-."},;
         {"D", "-.."}, {"E", "."}, {"F", "..-."},;
         {"G", "--."}, {"H", "...."}, {"I", ".."},; 
@@ -67,6 +70,7 @@ local nI, codMor
 
     ACCEPT "Digite o caractere: " TO codMor
 
+    // Laço para traduzir o caractere para codigo morse baseado no array
     for nI := 1 TO 36
         if aMorse[nI][1] == upper(codMor)
             QOUT(aMorse[nI][2])

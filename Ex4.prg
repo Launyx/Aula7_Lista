@@ -4,10 +4,12 @@ function main()
     local nI, cont, nMes
     local bLoop := .T.
 
+    // Adiciona os nomes dos meses a um vetor
     for nI := 1 TO 12
         AAdd(meses, CMonth(CToD("2023/" + Alltrim(Str(nI)) + "/01")))
     next nI
 
+    // Laço para certificar que o usuário digite um número entre 1 e 12
     whil bLoop
         ACCEPT "Digite um número entre 1 e 12 para saber o mês correspondente: " TO nMes
 
@@ -18,9 +20,4 @@ function main()
             QOUT("Valor inválido, digite um número entre 1 e 12.")
         end if
     end do
-
-    for cont := 1 to len(meses)
-        QOUT(meses[cont])
-        
-    next cont
 RETURN nil

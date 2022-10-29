@@ -7,6 +7,7 @@ function main()
     local nChoice, nProc
     local bLoop := .T.
 
+    // Loop para manter o menu ativo
     while bLoop
 
         SET MESSAGE TO 24 CENTER
@@ -28,43 +29,43 @@ function main()
             CASE nChoice == 1           
                 QOUT(Chr(10) + "")
                 Carrega_vetor(@vetor)
-                wait "Pressione qualquer tecla para sair..."
+                wait "Pressione qualquer tecla para continuar..."
             CASE nChoice == 2       
                 QOUT(Chr(10) + "")
                 mostra_vetor(vetor)    
-                wait "Pressione qualquer tecla para sair..."
+                wait "Pressione qualquer tecla para continuar..."
             CASE nChoice == 3
                 QOUT(Chr(10) + "")
                 vetor_cresc(@vetor)
-                wait "Pressione qualquer tecla para sair..."
+                wait "Pressione qualquer tecla para continuar..."
             CASE nChoice == 4
                 QOUT(Chr(10) + "")
                 vetor_decres(vetor)
-                wait "Pressione qualquer tecla para sair..."
+                wait "Pressione qualquer tecla para continuar..."
             CASE nChoice == 5
                 QOUT(Chr(10) + "")
                 existe_vetor(vetor)
-                wait "Pressione qualquer tecla para sair..."
+                wait "Pressione qualquer tecla para continuar..."
             CASE nChoice == 6
                 QOUT(Chr(10) + "")
                 soma_vetor(vetor)
-                wait "Pressione qualquer tecla para sair..."
+                wait "Pressione qualquer tecla para continuar..."
             CASE nChoice == 7
                 QOUT(Chr(10) + "")
                 media_vetor(vetor)
-                wait "Pressione qualquer tecla para sair..."
+                wait "Pressione qualquer tecla para continuar..."
             CASE nChoice == 8
                 QOUT(Chr(10) + "")
                 maior_menor(vetor)
-                wait "Pressione qualquer tecla para sair..."
+                wait "Pressione qualquer tecla para continuar..."
             CASE nChoice == 9
                 QOUT(Chr(10) + "")
                 embaralha_vetor(@vetor)
-                wait "Pressione qualquer tecla para sair..."
+                wait "Pressione qualquer tecla para continuar..."
             CASE nChoice == 10
                 QOUT(Chr(10) + "")
                 repete_vetor(vetor)
-                wait "Pressione qualquer tecla para sair..."
+                wait "Pressione qualquer tecla para continuar..."
         ENDCASE
     end do
 
@@ -74,6 +75,7 @@ static function Carrega_vetor(vetor)
 
     local nI, nNum
 
+    // Loop para carregar o vetor com valores do usuario
     for nI := 1 TO 8
         ACCEPT "Digite um numero: " TO nNum
         AFill(vetor, Val(nNum), nI, 1)
@@ -85,10 +87,11 @@ static function vetor_cresc(vetor)
 
     local aArray, nI
 
+    // Condição para verificar se o vetor está vazio
     if vetor[1] == nil
         QOUT("O vetor está vazio!")
     else
-        Asort(vetor)
+        Asort(vetor)    // Função para colocar o vetor em ordemc crescente
         for nI := 1 TO len(vetor)
             QOUT(StrZero(nI, 2) + ". " + Str(vetor[nI]))
         next nI
@@ -102,6 +105,7 @@ static function vetor_decres(vetor)
 
     tamanho := len(vetor) + 1
 
+    // Função para colocar o vetor em ordem decrescente
     for nI1 := 1 TO len(vetor) / 2
         aux := vetor[nI1]
         vetor[nI1] := vetor[tamanho - 1]
@@ -114,6 +118,7 @@ static function existe_vetor(vetor)
 
     local nScanner, nValor, bLoop := .T.
 
+    // Loop para certificar que o usuário digite um número
     while bLoop
         ACCEPT "Digite um número: " TO nValor
         if isdigit(nValor)
@@ -124,6 +129,7 @@ static function existe_vetor(vetor)
         end if
     end do
 
+    // Condição para verificar se o vetor está vazio
     if len(vetor) == 0
         QOUT("O vetor está vazio!")
 
@@ -136,13 +142,14 @@ RETURN nil
 
 static function soma_vetor(vetor)
 
-    local nI, media := 0
+    local nI, soma := 0
 
+    // Loop para somar os valores do vetor
     for nI := 1 TO len(vetor)
-        media += vetor[nI]
+        soma += vetor[nI]
     next nI
 
-    QOUT("A soma de todos os valores do vetor é igual a " + Alltrim(Str(media)))
+    QOUT("A soma de todos os valores do vetor é igual a " + Alltrim(Str(soma)))
     
 
 RETURN nil
@@ -151,10 +158,12 @@ static function media_vetor(vetor)
 
     local nI, media := 0
 
+    // Loop para somar os valores do vetor
     for nI := 1 TO len(vetor)
         media += vetor[nI]
     next nI
 
+    // Obtendo a media do vetor
     media := media / 8
     QOUT("A média do vetor é: " + Alltrim(Str(media)))
 
@@ -166,11 +175,13 @@ static function maior_menor(vetor)
     local nMaior := 0
     local nI
 
+    // Loop para verificar cada elemento do vetor
     for nI := 1 TO len(vetor)
+        // Loop para verificar se o elemento do vetor é o maior
         if vetor[nI] > nMaior
             nMaior := vetor[nI]
         endif
-
+        // condição para verificar se o elemento do vetor é o menor
         if vetor[nI] < nMenor
             nMenor := vetor[nI]
         end if
@@ -184,6 +195,7 @@ static function embaralha_vetor(vetor)
 
     local nI, aux
 
+    // Loop para embaralhar o vetor
     for nI := 1 TO len(vetor)
         aux := vetor[nI]
         vetor[nI] := vetor[len(vetor)]

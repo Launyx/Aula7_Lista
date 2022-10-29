@@ -16,14 +16,18 @@ function main()
 
 RETURN nil
 
+// Função para calcular diferenca da diagonal princial pela secundaria e uma matriz
 static function pega_diferenca(matriz)
 
     local cont, nI
     local nMain := 0, nSecond := 0, nRes, soma := 1
+
+    // Laço para somar os valores da diagonal principal
     for cont := 1 TO 3
         nMain+= matriz[cont][cont]
     next cont
 
+    // Laço para somar os valores da diagonal secundária
     for nI := 3 TO 1 step -1
         nSecond += matriz[soma][nI]
         soma ++

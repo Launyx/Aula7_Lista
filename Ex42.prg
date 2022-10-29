@@ -39,11 +39,13 @@ function main()
 
 RETURN nil
 
+// Função para ler os nomes do alunos
 static function le_nomes(matriz)
 
     local nI, cNome
 
     QOUT("")
+    // Laço para obter os nomes e coloca-los na matriz
     for nI := 1 TO 5
         ACCEPT "Digite os nomes dos alunos: " TO cNome
         AAdd(matriz[nI], cNome)
@@ -51,11 +53,13 @@ static function le_nomes(matriz)
 
 RETURN nil
 
+// Função para obter o nome dos alunos
 static function le_notas(matriz)
 
     local nI1, nNota
 
     QOUT("")
+    // Sequência de laços que obter as notas e as colocam na matriz
     for nI1 := 2 TO 4
         ACCEPT "Digite as notas do primeiro aluno: " TO nNota
 
@@ -113,15 +117,18 @@ static function le_notas(matriz)
 
 RETURN nil
 
+// Função para calcular a media
 static function calcula_media(matriz)
 
     local nI, nJ, cont, nCont, nMedias := 0
     local aMedias := {{}, {}, {}, {}, {}}
 
+    // Laço para adicionar os nomes dos alunos a uma matriz
     for nI := 1 TO 5
         AAdd(aMedias[nI], matriz[nI][1])
     next nI
 
+    // Laço para calcular a media e adicionala a uma matriz
     for cont := 1 TO 5
         for nJ := 2 TO 4
             nMedias += matriz[cont][nJ]

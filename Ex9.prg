@@ -8,6 +8,7 @@ function main()
 
 RETURN nil
 
+// Função para mostrar todos os elementos de um vetor
 function le_vetor(vetor)
 
     local nI
@@ -18,6 +19,7 @@ function le_vetor(vetor)
 
 return nil
 
+// Função para mostrar todos os elementos de um vetor numérico
 function le_vetor_num(vetor)
 
     local nI
